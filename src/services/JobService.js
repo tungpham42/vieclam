@@ -49,8 +49,11 @@ export const fetchJobFilters = async () => {
       if (job.category) categories.add(job.category);
     });
 
+    // Convert the Set to an array and sort it alphabetically
+    const sortedCategories = [...categories].sort();
+
     return {
-      categories: [...categories],
+      categories: sortedCategories,
     };
   } catch (error) {
     console.error("Error fetching job filters:", error);

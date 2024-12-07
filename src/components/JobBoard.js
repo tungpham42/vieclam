@@ -260,7 +260,7 @@ const JobBoard = () => {
             />
             <Button
               variant="primary"
-              href={selectedJob.url}
+              href={`${selectedJob.url}?via=tung`}
               target="_blank"
               rel="noopener noreferrer"
             >
