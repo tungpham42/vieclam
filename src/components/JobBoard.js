@@ -90,12 +90,19 @@ const JobBoard = () => {
     );
   }, [pagination]);
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Prevent default form submission
+      handleSearch();
+    }
+  };
+
   return (
     <Container className="my-4">
       <h1 className="text-center">
         <FontAwesomeIcon icon={faBriefcase} /> Remote Job Board
       </h1>
-      <Form className="my-4">
+      <Form className="my-4" onSubmit={(e) => e.preventDefault()}>
         <Row>
           <Col md={5}>
             <Form.Control
@@ -103,6 +110,7 @@ const JobBoard = () => {
               placeholder="Search for jobs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              onKeyDown={handleKeyDown} // Bind Enter key to trigger search
             />
           </Col>
           <Col md={5}>
