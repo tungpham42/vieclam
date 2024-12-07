@@ -179,12 +179,14 @@ const JobBoard = () => {
               <Card.Body>
                 <Card.Title>{job.title}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
-                  <img
-                    src={job.company_logo}
-                    alt={job.company_name}
-                    style={{ width: 40, height: 40, borderRadius: "50%" }}
-                    className="me-2"
-                  />
+                  {job.company_logo && (
+                    <img
+                      src={job.company_logo}
+                      alt={job.company_name}
+                      style={{ width: 40, height: 40, borderRadius: "50%" }}
+                      className="me-2"
+                    />
+                  )}
                   {job.company_name}
                 </Card.Subtitle>
                 <Card.Text>
