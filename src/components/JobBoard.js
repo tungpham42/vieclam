@@ -20,6 +20,7 @@ import {
   faExternalLinkAlt,
   faAngleDoubleLeft,
   faAngleDoubleRight,
+  faBriefcase,
 } from "@fortawesome/free-solid-svg-icons";
 import "./JobBoard.css";
 
@@ -117,7 +118,9 @@ const JobBoard = () => {
 
   return (
     <Container className="my-4">
-      <h1 className="text-center">Remote Job Board</h1>
+      <h1 className="text-center">
+        <FontAwesomeIcon icon={faBriefcase} /> Remote Job Board
+      </h1>
 
       <Form className="my-4">
         <Row>
