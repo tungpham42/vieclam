@@ -174,7 +174,7 @@ const JobBoard = () => {
 
       <Row>
         {jobs.map((job) => (
-          <Col key={job.id} md={4} className="mb-4">
+          <Col key={job.id} md={4} sm={6} className="mb-4">
             <Card className="job-card h-100 shadow-lg">
               <Card.Body>
                 <Card.Title>{job.title}</Card.Title>
