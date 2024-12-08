@@ -1,6 +1,9 @@
 import { Col, Card, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
+import {
+  faExternalLinkAlt,
+  faCircleInfo,
+} from "@fortawesome/free-solid-svg-icons";
 
 const formatDateTime = (inputDate) =>
   new Intl.DateTimeFormat("en-US", {
@@ -14,7 +17,7 @@ const formatDateTime = (inputDate) =>
   }).format(new Date(inputDate));
 
 const JobCard = ({ job, openJobModal }) => (
-  <Col md={4} sm={6} className="mb-4">
+  <Col lg={4} md={6} sm={6} className="mb-4">
     <Card className="job-card h-100 shadow-lg">
       <Card.Body>
         <Card.Title>{job.title}</Card.Title>
@@ -35,8 +38,22 @@ const JobCard = ({ job, openJobModal }) => (
         <Card.Text>
           <strong>Published:</strong> {formatDateTime(job.publication_date)}
         </Card.Text>
-        <Button variant="primary" onClick={() => openJobModal(job)}>
-          <FontAwesomeIcon icon={faLink} /> View Details
+        <Button
+          className="me-2"
+          size="sm"
+          variant="primary"
+          onClick={() => openJobModal(job)}
+        >
+          <FontAwesomeIcon icon={faCircleInfo} /> Details
+        </Button>
+        <Button
+          size="sm"
+          variant="light"
+          href={`${job.url}?via=tung`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FontAwesomeIcon icon={faExternalLinkAlt} /> Apply
         </Button>
       </Card.Body>
     </Card>
