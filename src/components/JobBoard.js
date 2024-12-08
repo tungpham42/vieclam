@@ -168,15 +168,16 @@ const JobBoard = () => {
           onClick={() => handlePaginationChange(pagination.currentPage - 1)}
           disabled={isPaginationDisabled || pagination.currentPage === 1}
         />
-        {paginationItems.map((page) => (
-          <Pagination.Item
-            key={page}
-            active={page === pagination.currentPage}
-            onClick={() => handlePaginationChange(page)}
-          >
-            {page}
-          </Pagination.Item>
-        ))}
+        {!isPaginationDisabled &&
+          paginationItems.map((page) => (
+            <Pagination.Item
+              key={page}
+              active={page === pagination.currentPage}
+              onClick={() => handlePaginationChange(page)}
+            >
+              {page}
+            </Pagination.Item>
+          ))}
         <Pagination.Next
           onClick={() => handlePaginationChange(pagination.currentPage + 1)}
           disabled={
