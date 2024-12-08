@@ -116,7 +116,11 @@ const JobBoard = () => {
             />
           </Col>
           <Col md={5}>
-            <Form.Select value={category} onChange={handleCategoryChange}>
+            <Form.Select
+              value={category}
+              onChange={handleCategoryChange}
+              onKeyDown={handleKeyDown}
+            >
               <option value="">All Categories</option>
               {categories.map((cat) => (
                 <option key={cat} value={cat}>
