@@ -92,10 +92,12 @@ const JobBoard = () => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // Prevent default form submission
+      e.preventDefault();
       handleSearch();
     }
   };
+
+  const isPaginationDisabled = jobs.length === 0 || pagination.totalPages === 0;
 
   return (
     <Container className="my-4">
@@ -110,7 +112,7 @@ const JobBoard = () => {
               placeholder="Search for jobs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyDown={handleKeyDown} // Bind Enter key to trigger search
+              onKeyDown={handleKeyDown}
             />
           </Col>
           <Col md={5}>
@@ -158,13 +160,13 @@ const JobBoard = () => {
       <Pagination className="justify-content-center">
         <Pagination.First
           onClick={() => handlePaginationChange(1)}
-          disabled={pagination.currentPage === 1}
+          disabled={isPaginationDisabled || pagination.currentPage === 1}
         >
           <FontAwesomeIcon icon={faAngleDoubleLeft} />
         </Pagination.First>
         <Pagination.Prev
           onClick={() => handlePaginationChange(pagination.currentPage - 1)}
-          disabled={pagination.currentPage === 1}
+          disabled={isPaginationDisabled || pagination.currentPage === 1}
         />
         {paginationItems.map((page) => (
           <Pagination.Item
@@ -177,11 +179,17 @@ const JobBoard = () => {
         ))}
         <Pagination.Next
           onClick={() => handlePaginationChange(pagination.currentPage + 1)}
-          disabled={pagination.currentPage === pagination.totalPages}
+          disabled={
+            isPaginationDisabled ||
+            pagination.currentPage === pagination.totalPages
+          }
         />
         <Pagination.Last
           onClick={() => handlePaginationChange(pagination.totalPages)}
-          disabled={pagination.currentPage === pagination.totalPages}
+          disabled={
+            isPaginationDisabled ||
+            pagination.currentPage === pagination.totalPages
+          }
         >
           <FontAwesomeIcon icon={faAngleDoubleRight} />
         </Pagination.Last>
